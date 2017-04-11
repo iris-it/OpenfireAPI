@@ -28,20 +28,45 @@ namespace OpenfireAPI.entity
         public bool membersOnly { get; set; }
         public bool moderated { get; set; }
 
-        public List<string> broadcastPresenceRoles { get; set; }
+        public broadcastPresenceRoleEntities broadcastPresenceRoles { get; set; }
 
-        public List<string> owners { get; set; }
+        public OwnerEntities owners { get; set; }
 
-        public List<string> admins { get; set; }
+        public AdminEntities admins { get; set; }
 
-        public List<string> members { get; set; }
+        public MemberEntities members { get; set; }
 
-        public List<string> outcasts { get; set; }
+        public OutcastEntities outcasts { get; set; }
 
 
         public string Tostring()
         {
             return "RoomName: " + roomName + ", Description: " + description + "\n";
         }
+    }
+
+    public class broadcastPresenceRoleEntities
+    {
+        public List<String> broadcastPresenceRole { get; set; }
+    }
+
+    public class OwnerEntities
+    {
+        public List<String> owner { get; set; }
+    }
+
+    public class AdminEntities
+    {
+        public List<String> admin { get; set; }
+    }
+
+    public class MemberEntities
+    {
+        public List<String> member { get; set; }
+    }
+
+    public class OutcastEntities
+    {
+        public List<String> outcast { get; set; }
     }
 }

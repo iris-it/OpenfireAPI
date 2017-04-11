@@ -55,18 +55,20 @@ namespace OpenfireAPI
             request.RequestFormat = DataFormat.Json;
             request.AddHeader("Accept", "application/json");
 
-            if (this.isDebug)
-            {
-                Console.WriteLine("--------- DEBUG PAYLOAD OPENFIRECLIENT ---------");
-                Console.WriteLine(payload);
-                Console.WriteLine("--------- DEBUG PAYLOAD OPENFIRECLIENT ---------");
-            }
-
             if (payload == null) return Client.Execute(request);
 
             request.AddHeader("Content-Type", "application/json");
-            request.JsonSerializer = new RestSharpJsonNetSerializer();
+            var jsonSerializer = new RestSharpJsonNetSerializer();
+
+            request.JsonSerializer = jsonSerializer;
             request.AddJsonBody(payload);
+
+            if (this.isDebug)
+            {
+                Console.WriteLine("--------- DEBUG PAYLOAD OPENFIRECLIENT ---------");
+                Console.WriteLine(jsonSerializer.Serialize(payload));
+                Console.WriteLine("--------- DEBUG PAYLOAD OPENFIRECLIENT ---------");
+            }
 
             return Client.Execute(request);
         }
@@ -76,9 +78,9 @@ namespace OpenfireAPI
 
             if (this.isDebug)
             {
-                Console.WriteLine("--------- DEBUG PAYLOAD OPENFIRECLIENT ---------");
+                Console.WriteLine("--------- DEBUG RESPONSE OPENFIRECLIENT ---------");
                 Console.WriteLine(response.Content);
-                Console.WriteLine("--------- DEBUG PAYLOAD OPENFIRECLIENT ---------");
+                Console.WriteLine("--------- DEBUG RESPONSE OPENFIRECLIENT ---------");
             }
 
             return response.StatusCode == HttpStatusCode.OK || response.StatusCode == HttpStatusCode.Created;
