@@ -28,9 +28,9 @@ namespace OpenfireAPI.entity
         public bool membersOnly { get; set; }
         public bool moderated { get; set; }
 
-        public List<string> nroadcastPresenceRoles { get; set; }
+        public List<string> broadcastPresenceRoles { get; set; }
 
-        public List<string> bwners { get; set; }
+        public List<string> owners { get; set; }
 
         public List<string> admins { get; set; }
 
