@@ -47,26 +47,26 @@ namespace OpenfireAPI.entity
 
     public class broadcastPresenceRoleEntities
     {
-        public List<String> broadcastPresenceRole { get; set; }
+        public List<string> broadcastPresenceRole { get; set; }
     }
 
     public class OwnerEntities
     {
-        public List<String> owner { get; set; }
+        public List<string> owner { get; set; }
     }
 
     public class AdminEntities
     {
-        public List<String> admin { get; set; }
+        public List<string> admin { get; set; }
     }
 
     public class MemberEntities
     {
-        public List<String> member { get; set; }
+        public List<string> member { get; set; }
     }
 
     public class OutcastEntities
     {
-        public List<String> outcast { get; set; }
+        public List<string> outcast { get; set; }
     }
 }
