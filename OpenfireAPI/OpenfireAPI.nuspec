@@ -2,13 +2,13 @@
 <package >
   <metadata>
     <id>IrisIT.OpenFireRestClient</id>
-    <version>1.0.5</version>
+    <version>1.0.6</version>
     <title>IrisIT.OpenFireRestClient</title>
     <authors>IrisIT</authors>
     <owners>IrisIT</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Rest client for Openfire</description>
-    <releaseNotes>Fix typo chatroom</releaseNotes>
+    <releaseNotes>Add Debug</releaseNotes>
     <copyright>Copyright 2017</copyright>
     <tags>IrisIT, OpenFire</tags>
   </metadata>
