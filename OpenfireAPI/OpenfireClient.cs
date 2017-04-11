@@ -1,5 +1,6 @@
 ﻿using OpenfireAPI.util;
 using RestSharp;
+using System;
 using System.Collections.Generic;
 using System.Net;
 
@@ -11,11 +12,16 @@ namespace OpenfireAPI
         public RestClient Client { get; private set; }
         public string OpenfirePlugin { get; private set; }
 
-        public OpenfireClient(string url, int port, OpenfireAuthenticator authenticator)
+        public bool isDebug { get; private set; }
+
+        public OpenfireClient(string url, int port, OpenfireAuthenticator authenticator, bool debug = false)
         {
+
             Authenticator = authenticator;
-            Client = new RestClient(url + ":" + port) {Authenticator = authenticator};
+            Client = new RestClient(url + ":" + port) { Authenticator = authenticator };
             OpenfirePlugin = "/plugins/restapi/v1/";
+
+            this.isDebug = debug;
         }
 
         public IRestResponse get(string restPath, Dictionary<string, string> queryParams)
@@ -49,6 +55,13 @@ namespace OpenfireAPI
             request.RequestFormat = DataFormat.Json;
             request.AddHeader("Accept", "application/json");
 
+            if (this.isDebug)
+            {
+                Console.WriteLine("--------- DEBUG PAYLOAD OPENFIRECLIENT ---------");
+                Console.WriteLine(payload);
+                Console.WriteLine("--------- DEBUG PAYLOAD OPENFIRECLIENT ---------");
+            }
+
             if (payload == null) return Client.Execute(request);
 
             request.AddHeader("Content-Type", "application/json");
@@ -60,7 +73,14 @@ namespace OpenfireAPI
 
         public bool isStatusCodeOK(IRestResponse response)
         {
-            //Console.WriteLine(response.StatusCode);
+
+            if (this.isDebug)
+            {
+                Console.WriteLine("--------- DEBUG PAYLOAD OPENFIRECLIENT ---------");
+                Console.WriteLine(response.Content);
+                Console.WriteLine("--------- DEBUG PAYLOAD OPENFIRECLIENT ---------");
+            }
+
             return response.StatusCode == HttpStatusCode.OK || response.StatusCode == HttpStatusCode.Created;
         }
     }

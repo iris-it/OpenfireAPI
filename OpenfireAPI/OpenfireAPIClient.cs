@@ -10,9 +10,9 @@ namespace OpenfireAPI
         public OpenfireClient Client { get; private set; }
         public JsonDeserializer Deserial { get; private set; }
 
-        public OpenfireApiClient(string url, int port, OpenfireAuthenticator authenticator)
+        public OpenfireApiClient(string url, int port, OpenfireAuthenticator authenticator, bool debug = false)
         {
-            Client = new OpenfireClient(url, port, authenticator);
+            Client = new OpenfireClient(url, port, authenticator, debug);
             Deserial = new JsonDeserializer();
         }
 
