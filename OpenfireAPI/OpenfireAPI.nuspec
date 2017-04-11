@@ -2,13 +2,13 @@
 <package >
   <metadata>
     <id>IrisIT.OpenFireRestClient</id>
-    <version>1.0.7</version>
+    <version>1.0.8</version>
     <title>IrisIT.OpenFireRestClient</title>
     <authors>IrisIT</authors>
     <owners>IrisIT</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Rest client for Openfire</description>
-    <releaseNotes>Add Debug</releaseNotes>
+    <releaseNotes>Add entites</releaseNotes>
     <copyright>Copyright 2017</copyright>
     <tags>IrisIT, OpenFire</tags>
   </metadata>
